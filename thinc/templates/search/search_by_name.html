@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+    Browse - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <h1>
+        Browse ideas {% if initial %} Starting with 
+        '{{ initial|title }}'{% endif %}
+    </h1>
+
+    {% for letter in 'abcdefghijklmnopqrstuvwxyz' %}
+    <a href="{% url 'browse_by_name' initial=letter %}" 
+    {% if initial == letter %}class="active"{% endif %}>
+        {{ letter|upper }}
+    </a>
+    {% endfor %}
+
+    {% for idea in ideas %}
+    <ul>
+        <li>
+            <a href="{% url 'idea_detail' slug=idea.slug %}">
+                {{ idea.name }}
+            </a>
+        </li>
+    </ul>
+    {% empty %}
+    <p>Sorry, no results!</p>
+    {% endfor %}
+    {% if initial != letter %}
+    <a href="{% url 'browse_by_name' %}">Back to Browse</a>
+    {% endif %}
+{% endblock content %}

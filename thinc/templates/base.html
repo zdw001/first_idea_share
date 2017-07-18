@@ -1,0 +1,68 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+    <title>
+         {% block title %}thInc.{% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block header %}{% endblock header %}
+</head>
+
+<ul class="navigation">
+    <li class="nav-item">
+        <a href="{% url 'home' %}">Home</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'contact' %}">Contact</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'about' %}">About Us</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'browse_by_name' %}">Browse by Name</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'browse_by_votes' %}">Browse by Votes</a>
+    </li>
+    {% if user.is_authenticated %}
+    <li class="nav-item">
+        <a href="{% url 'my_ideas' %}">My Ideas</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'auth_logout' %}">Logout</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a href="{% url 'registration_register' %}">Register</a>
+    </li>
+    <li class="nav-item">
+        <a href="{% url 'auth_login' %}">Login</a>
+    </li>                     
+    {% endif %}
+</ul>
+            
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+
+<div class="site-wrap">
+    <div class="header">
+        <center>
+        <a id="logo" href="{% url 'home' %}">
+            <img id="logo" src="{% static 'images/thinc-logo.png' %}" alt="thInc." width=100%/>
+        </a>
+        </center>
+        {% if user.is_authenticated %}
+        <a href="{% url 'create_idea' %}"><button id="create_idea" type="button">Create Idea!</button></a>
+        {% endif %}
+    </div>
+
+    <div class="content">
+        {% block content %}{% endblock content %}
+        {% block footer %}{% endblock footer %}
+    </div>
+
+</div>
+
+</html>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+    Browse - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <h1>
+        Browse ideas with the most votes
+    </h1>
+
+    {% for idea in ideas %}
+    <ul>
+        <li class="ideas">
+            <p>{{ idea.votes }}</p>
+            <a href="{% url 'idea_detail' slug=idea.slug %}">
+                {{ idea.name }}
+            </a>
+        </li>
+    </ul>
+    {% empty %}
+    <p>Sorry, no results!</p>
+    {% endfor %}
+{% endblock content %}

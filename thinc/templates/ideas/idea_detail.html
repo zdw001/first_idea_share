@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ idea.name }} - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <div class="ideas">
+        <h1>{{ idea.name }}</h1>
+        <h4 class="published_date">{{ idea.published_date }}</h4>
+        {% if idea.updateDate %}
+        <h4 class="updated_date">{{ idea.updated_date }}</h4>
+        {% endif %}
+        <h2>{{ idea.overview }}</h2>
+        
+        <h3>
+            This idea has {{ idea.votes }} vote(s)
+        </h3>
+        <p>{{ idea.description }}</p>
+    
+            <p>
+                <a href="{% url 'edit_idea' slug=idea.slug %}">Edit your idea!</a>
+            </p>
+    </div>
+{% endblock content %}

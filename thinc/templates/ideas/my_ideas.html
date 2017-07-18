@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ idea.name }} - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <div class="ideas">
+        <h1>My Ideas</h1>
+        {% for idea in ideas %}
+        <div class="idea">
+            <h2>{{ idea.name }}</h2>
+            <h3>{{ idea.overview }}</h3>
+            <h4 class="publishDate">{{ idea.published_date }}</h4> 
+            <p>{{ idea.votes }} | {{ idea.description }}</p>
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="submit" value="+">
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

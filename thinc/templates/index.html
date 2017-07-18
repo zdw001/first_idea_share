@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}
+	Homepage - {{ block.super }}
+{% endblock title %}
+
+{% load staticfiles %}
+
+{% block content %}
+	<div class="banner">
+        <img class="background" src="{% static 'images/background.jpeg' %}" alt="background" >
+    </div>
+
+    <div id="topIdeas">
+        <h1>Top Ideas</h1>
+        <div class="ideas">
+            {% for idea in ideas %}
+            <div class="idea">
+                <h2>
+                	<a href="{% url 'idea_detail' slug=idea.slug %}">{{ idea.name }}
+            		</a>
+                </h2>
+                <h3>{{ idea.overview }}</h3>
+                <h4 class="publishDate">{{ idea.published_date }}</h4> 
+                <p>{{ idea.votes }} | {{ idea.description|truncatewords:10 }}</p>
+                <form role="form" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" name="voteup" value="+">
+                </form>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="latestIdeas">
+        <h1>Latest Ideas</h1>
+        <div class="ideas">
+            {% for idea in ideas %}
+            <div class="idea">
+                <h2>
+                    <a href="{% url 'idea_detail' slug=idea.slug %}">{{ idea.name }}
+                    </a>
+                </h2>
+                <h3>{{ idea.overview }}</h3>
+                <h4 class="published_date">{{ idea.published_date }}</h4> 
+                <p>{{ idea.votes }} | {{ idea.description|truncatewords:10 }}</p>
+                <form role="form" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="+">
+                </form>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
