@@ -16,9 +16,10 @@
             This idea has {{ idea.votes }} vote(s)
         </h3>
         <p>{{ idea.description }}</p>
-    
+        {% if user == idea.user %}
             <p>
                 <a href="{% url 'edit_idea' slug=idea.slug %}">Edit your idea!</a>
             </p>
+        {% endif %}
     </div>
 {% endblock content %}

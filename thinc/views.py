@@ -150,25 +150,6 @@ def my_ideas(request):
 			'ideas': ideas
 		})
 
-	# if ideas == None:
-	# 	return Http404
-
-	# else:	
-	# 	for idea in ideas:
-	# 		idea_name = idea.name
-	# 		idea_overview = idea.overview
-	# 		idea_description = idea.description
-	# 		idea_published_date = idea.published_date
-	# 		idea_votes = idea.votes
-	# 		return render(request, 'ideas/my_ideas.html', {
-	# 			'ideas': ideas,
-	# 			'idea_name': idea_name,
-	# 			'idea_overview': idea.overview,
-	# 			'idea_description': idea_description,
-	# 			'idea_published_date': idea_published_date,
-	# 			'idea_votes': idea_votes,
-	# 		})
-
 def upvote(request, idea_id):
 	idea = Idea.objects.get(pk=idea_id)
 	idea.votes += 1

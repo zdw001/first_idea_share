@@ -1,0 +1,178 @@
+body {
+    font-family: "Arial Rounded MT Bold", Helvetica, sans-serif;
+    transition: background-color .5s;
+    margin: 0;
+    background-color: #191970;
+}
+
+h1, h3, h4, h5, h6 {
+ margin: 0;
+ padding: 0;
+ font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: #191970;
+}
+
+a:hover {
+  color: #3366ff;
+}
+
+h2 {
+  font-size: 30px;
+  margin: 0 0 3px;
+  padding: 0;
+ }
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 0;
+    margin: 0;
+}
+
+#content {
+  padding: 0 10%;
+  background-color: #e6e6e6;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+#burger {
+  font-size:40px;
+  cursor:pointer;
+  margin: 20px;
+  display:inline-block;
+  float:left
+}
+
+.banner {
+  position: absolute;
+  left: 0;
+  top: 110px;
+  height: 200px;
+  overflow-y: hidden;
+  margin: 0px;
+}
+
+
+/* END SIDEBAR STYLING */
+#header {
+  height: 100px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.quarter {
+  width: 25%;
+  height: 100%;
+  float: left;
+}
+
+.half {
+  width: 49%;
+  height: 100%;
+  float: left;
+}
+
+a#logo {
+  width: 50%;
+  margin: 5px 25%;
+}
+
+img#logo {
+  margin: 5px 0;
+}
+
+.idea_section {
+  margin: 20px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.idea {
+  margin: 10px 10px 20px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.voting {
+  width: 100px;
+  float: left;
+  display: block;
+}
+
+.voting form {
+  padding: 20px 40px;
+}
+
+.voting input {
+  padding: 10px;
+}
+
+.voting h3 {
+  margin: 10px;
+}
+
+.the_rest {
+  margin: 0 0 0 100px;
+}
+
+.published_date {
+  font-style: italic;
+  color: #696969;
+  font-size: .6em;
+}
+
+button#create_idea {
+  font-size: 15px;
+  font-family: "Arial Rounded MT Bold", Helvetica, sans-serif;
+  float: right;
+  margin: 25px;
+  right: 20px;
+  padding: 10px 5px;
+  border-radius: 5px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
