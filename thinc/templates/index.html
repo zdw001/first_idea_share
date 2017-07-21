@@ -10,9 +10,12 @@
         <img class="background" src="{% static 'images/background.jpeg' %}" alt="background" >
     </div> -->
 
-    <div class="idea_section">
-        <h1>Top Ideas</h1>
-            {% for idea in top_ideas %}
+<h1 style="margin-left: 50px">Top Ideas</h1>
+<ul>
+    {% for idea in top_ideas %}
+    <li>
+        <div class="idea_section">
+            <div class="idea_outer">
                 <div class="idea">
                     <div class="voting">
                         <form role="form" method="post">
@@ -20,7 +23,9 @@
                             {{ form.as_p }}
                             <input type="submit" name="voteup" value="+">
                         </form>
-                        <h3>{{ idea.votes }} votes</h3>
+                    </div>
+                    <div class="votes">
+                        <h3>{{ idea.votes }}</h3>
                     </div>
                     <div class="the_rest">
                         <h2>
@@ -31,11 +36,17 @@
                         <p>{{ idea.description|truncatewords:50 }}</p>
                     </div>
                 </div>
-            {% endfor %}
-    </div>
-    <div class="idea_section">
-        <h1>Latest Ideas</h1>
-            {% for idea in ideas %}
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+<h1 style="margin-left: 50px">Latest Ideas</h1>
+    <ul>
+    {% for idea in ideas %}
+    <li>
+        <div class="idea_section">
+            <div class="idea_outer">
                 <div class="idea">
                     <div class="voting">
                         <form role="form" method="post">
@@ -43,7 +54,9 @@
                             {{ form.as_p }}
                             <input type="submit" name="voteup" value="+">
                         </form>
-                        <h3>{{ idea.votes }} votes</h3>
+                    </div>
+                    <div class="votes">
+                        <h3>{{ idea.votes }}</h3>
                     </div>
                     <div class="the_rest">
                         <h2>
@@ -54,6 +67,9 @@
                         <p>{{ idea.description|truncatewords:50 }}</p>
                     </div>
                 </div>
-            {% endfor %}
-    </div>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock content %}

@@ -12,6 +12,7 @@ from django.contrib.auth.views import (
     password_reset_complete
     )
 from thinc.backends import MyRegistrationView
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
@@ -57,6 +58,10 @@ urlpatterns = [
         {'template_name':
         'registration/password_reset_complete.html'},
         name="password_reset_complete"),
+
+    # login/logout
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
 
     url(r'^accounts/', 
         include('registration.backends.simple.urls')),

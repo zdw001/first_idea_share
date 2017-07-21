@@ -68,6 +68,9 @@ def contact(request):
 def create_idea(request):
 	form_class = IdeaForm
 
+	if not request.user.is_authenticated():
+		return redirect('login')
+
 	# if we're coming from a submitted form, do this
 	if request.method == 'POST':
 		# grab the date from the submitted form and apply to the form
@@ -99,6 +102,9 @@ def edit_idea(request, slug):
 	# grab the object 
 	idea = Idea.objects.get(slug=slug)
 
+	# make sure the logged in user is the onwer of the idea
+	if idea.user != request.user:
+		raise Http404
 
 	# set the form we're using 
 	form_class = IdeaForm

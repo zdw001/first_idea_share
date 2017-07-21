@@ -16,6 +16,11 @@
                 {% csrf_token %}
                 <input type="submit" value="+">
             </form>
+        {% if user == idea.user %}
+            <p>
+                <a href="{% url 'edit_idea' slug=idea.slug %}">Edit your idea!</a>
+            </p>
+        {% endif %}
         </div>
         {% endfor %}
     </div>
