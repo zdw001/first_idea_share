@@ -2,6 +2,8 @@ from django.forms import ModelForm
 from django import forms
 from thinc.models import Idea
 from django.utils import html
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 class IdeaForm(ModelForm):
 	class Meta:
@@ -21,23 +23,13 @@ class ContactForm(forms.Form):
         self.fields['contact_email'].label = "Your email:" 
         self.fields['content'].label = "What do you want to say?"
 
+# registration form
+class RegistrationForm(UserCreationForm):
+    # first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    # last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    email = forms.EmailField(max_length=254, help_text='Required. Please enter a valid email address.')
 
-# create SubmitButtonField
-class SubmitButtonWidget(forms.Widget):
-    def render(self, name, value, attrs=None):
-        return '<input type="submit" name="%s" value="%s">' % (html.escape(name), html.escape(value))
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2', )
 
-
-class SubmitButtonField(forms.Field):
-    def __init__(self, *args, **kwargs):
-        if not kwargs:
-            kwargs = {}
-        kwargs["widget"] = SubmitButtonWidget
-
-        super(SubmitButtonField, self).__init__(*args, **kwargs)
-
-    def clean(self, value):
-        return value
-		
-class VoteForm(forms.Form):
-    pass

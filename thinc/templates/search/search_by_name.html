@@ -16,17 +16,38 @@
     </a>
     {% endfor %}
 
-    {% for idea in ideas %}
     <ul>
-        <li>
-            <a href="{% url 'idea_detail' slug=idea.slug %}">
-                {{ idea.name }}
-            </a>
-        </li>
-    </ul>
+    {% for idea in ideas %}
+    <li>
+        <div class="idea_section">
+            <div class="idea_outer">
+                <div class="idea">
+                    <div class="voting">
+                        <form role="form" method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <input type="submit" name="voteup" value="+">
+                        </form>
+                    </div>
+                    <div class="votes">
+                        <h3>{{ idea.votes }}</h3>
+                    </div>
+                    <div class="the_rest">
+                        <h2>
+                            <a class="idea_name" href="{% url 'idea_detail' slug=idea.slug %}">{{ idea.name }}
+                            </a>
+                        </h2>
+                        <h3>{{ idea.overview }} | <span class="published_date">{{ idea.published_date }}</span></h3>
+                        <p>{{ idea.description|truncatewords:50 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
     {% empty %}
     <p>Sorry, no results!</p>
     {% endfor %}
+    </ul>
     {% if initial != letter %}
     <a href="{% url 'browse_by_name' %}">Back to Browse</a>
     {% endif %}

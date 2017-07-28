@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 from django.template.defaultfilters import slugify
-from thinc.forms import IdeaForm, VoteForm, ContactForm
+from thinc.forms import IdeaForm, ContactForm, RegistrationForm
 from thinc.models import Idea
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
@@ -8,6 +10,8 @@ from django.template.loader import get_template
 from django.core.mail import EmailMessage
 from django.template import Context
 from django.contrib import messages
+from registration.backends.simple.views import RegistrationView
+from django import forms
 
 def browse_by_name(request, initial=None):
 	if initial: 
@@ -70,6 +74,9 @@ def create_idea(request):
 
 	if not request.user.is_authenticated():
 		return redirect('login')
+
+	if "cancel" in request.POST:
+            return redirect('home')
 
 	# if we're coming from a submitted form, do this
 	if request.method == 'POST':
@@ -156,10 +163,28 @@ def my_ideas(request):
 			'ideas': ideas
 		})
 
-def upvote(request, idea_id):
-	idea = Idea.objects.get(pk=idea_id)
-	idea.votes += 1
-	idea.save()
-	return render(request, 'index.html')
+def register(request):
+	if request.method == 'POST':
+		form = RegistrationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			username = form.cleaned_data.get('username')
+			raw_password = form.cleaned_data.get('password1')
+
+			email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
+			user = authenticate(username=username, password=raw_password)
+			login(request, user)
+			return redirect('home')
+	else:
+		form = RegistrationForm()
+	return render(request, 'registration/register.html', {
+			'form': form
+		})
+
+def user_info(request, username):
+	user = User.objects.get(username=username)
+	return render(request, '')
+
+
 
 

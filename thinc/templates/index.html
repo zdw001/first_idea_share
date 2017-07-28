@@ -6,10 +6,11 @@
 {% load staticfiles %}
 
 {% block content %}
-	<!-- <div class="banner">
-        <img class="background" src="{% static 'images/background.jpeg' %}" alt="background" >
-    </div> -->
+<div class="banner">
+    <h1 class="banner">Where imagination becomes innovation</h1>
+</div>
 
+<div class="page_content">
 <h1 style="margin-left: 50px">Top Ideas</h1>
 <ul>
     {% for idea in top_ideas %}
@@ -29,10 +30,11 @@
                     </div>
                     <div class="the_rest">
                         <h2>
-                        	<a href="{% url 'idea_detail' slug=idea.slug %}">{{ idea.name }}
+                        	<a class="idea_name" href="{% url 'idea_detail' slug=idea.slug %}">{{ idea.name }}
                     		</a>
                         </h2>
                         <h3>{{ idea.overview }} | <span class="published_date">{{ idea.published_date }}</span></h3>
+                        <p class="username">by <i class="username">{{ idea.user }}</i></p>
                         <p>{{ idea.description|truncatewords:50 }}</p>
                     </div>
                 </div>
@@ -60,10 +62,11 @@
                     </div>
                     <div class="the_rest">
                         <h2>
-                            <a href="{% url 'idea_detail' slug=idea.slug %}">{{ idea.name }}
+                            <a class="idea_name" href="{% url 'idea_detail' slug=idea.slug %}">{{ idea.name }}
                             </a>
                         </h2>
                         <h3>{{ idea.overview }} | <span class="published_date">{{ idea.published_date }}</span></h3>
+                        <p class="username">by <i class="username">{{ idea.user }}</i></p>
                         <p>{{ idea.description|truncatewords:50 }}</p>
                     </div>
                 </div>
@@ -72,4 +75,5 @@
     </li>
     {% endfor %}
 </ul>
+</div>
 {% endblock content %}

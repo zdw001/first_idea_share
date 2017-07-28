@@ -15,7 +15,8 @@ from thinc.backends import MyRegistrationView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
+    url(r'^accounts/register/$', views.register, name='registration_register'),
+    url(r'^accounts/create_idea/$', views.create_idea, name='registration_create_idea'),
     url(r'^$', views.index, name='home'),
     url(r'^about/$', TemplateView.as_view(template_name='about.html'), name='about'),
     url(r'^contact/$', views.contact, name='contact'),
@@ -25,9 +26,8 @@ urlpatterns = [
     url(r'^my_ideas/$', views.my_ideas, name='my_ideas'),
     url(r'^create_idea/$', views.create_idea, name='create_idea'),
 
-    #voting
-    url(r'^upvote/(?P<idea_id>[0-9]+)/$', views.upvote, name='upvote'),
-
+    # user page
+    url(r'^users/(?P<username>\w+)/$', views.user_info, name='user_info'),
 
     # browse
     url(r'^browse/$', RedirectView.as_view(pattern_name='browse_by_votes', permanent=True)),
