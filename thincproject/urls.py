@@ -27,8 +27,8 @@ urlpatterns = [
     url(r'^create_idea/$', views.create_idea, name='create_idea'),
 
     # profiles
-    url(r'^users/(?P<username>\w+)/$', views.profile_view, name='profile'),
-    url(r'^users/(?P<username>\w+)/edit/$', views.update_profile, name='edit_profile'),
+    # url(r'^users/(?P<username>\w+)/$', views.profile_view, name='profile'),
+    # url(r'^users/(?P<username>\w+)/edit/$', views.update_profile, name='edit_profile'),
 
     # browse
     url(r'^browse/$', RedirectView.as_view(pattern_name='browse_by_votes', permanent=True)),
