@@ -36,7 +36,7 @@
                     		</a>
                         </h2>
                         <h3>{{ idea.overview }} | <span class="published_date">{{ idea.published_date }}</span></h3>
-                        <p class="username">by <i class="username"><a href="{% url 'profile' %}">{{ idea.user }}</a></i></p>
+                        <p class="username">by <i class="username"><!-- <a href="{% url 'profile' %}">{{ idea.user }}</a> --></i></p>
                         <p>{{ idea.description|truncatewords:50 }}</p>
                     </div>
                 </div>
