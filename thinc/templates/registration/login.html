@@ -4,6 +4,7 @@
 {% endblock title %}
 
 {% block content %}
+<div class="block">
     <h1>Login</h1>
     <form role="form" action="" method="post">
         {% csrf_token %}
@@ -18,4 +19,5 @@
     <p>
         <a href="{% url 'registration_register' %}">Don't have an account? Register here</a>
     </p>
+</div>
 {% endblock content %}

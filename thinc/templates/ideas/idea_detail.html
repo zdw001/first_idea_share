@@ -4,31 +4,32 @@
 {% endblock title %}
 
 {% block content %}
-        <div class="idea_detail">
-            <div class="idea_outer">
-                <div class="idea">
-                    <div class="voting">
-                        <form role="form" method="post">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <input type="submit" name="voteup" value="+">
-                        </form>
-                    </div>
-                    <div class="votes">
-                        <h3>{{ idea.votes }}</h3>
-                    </div>
-                    <div class="the_rest">
-                        <h2 style="color: #3366ff;">{{ idea.name }}</h2>
-                        <h3>{{ idea.overview }} | <span class="published_date">{{ idea.published_date }}</span></h3>
-                        <p>{{ idea.description|truncatewords:50 }}</p>
-                         {% if user == idea.user %}
-                        <p>
-                            <a class="edit" href="{% url 'edit_idea' slug=idea.slug %}">Edit your idea!</a>
-                        </p>
-                    {% endif %}
-                    </div>
+<div class="block">
+    <div class="idea_detail">
+        <div class="idea_outer">
+            <div class="idea">
+                <div class="voting">
+                    <form role="form" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" name="voteup" value="+">
+                    </form>
+                </div>
+                <div class="votes">
+                    <h3>{{ idea.votes }}</h3>
+                </div>
+                <div class="the_rest">
+                    <h2 style="color: #3366ff;">{{ idea.name }}</h2>
+                    <h3>{{ idea.overview }} | <span class="published_date">{{ idea.published_date }}</span></h3>
+                    <p>{{ idea.description|truncatewords:50 }}</p>
+                     {% if user == idea.user %}
+                    <p>
+                        <a class="edit" href="{% url 'edit_idea' slug=idea.slug %}">Edit your idea!</a>
+                    </p>
+                {% endif %}
                 </div>
             </div>
         </div>
     </div>
+</div>
 {% endblock content %}

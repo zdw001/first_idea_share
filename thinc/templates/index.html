@@ -7,10 +7,12 @@
 
 {% block content %}
 <div class="banner">
-    <h1 class="banner">Where imagination becomes innovation</h1>
+    <div class="banner_content">
+        <h1 class="banner">Inspirational Quote</h1>
+    </div>
 </div>
 
-<div class="page_content">
+<div class="block">
 <h1 style="margin-left: 50px">Top Ideas</h1>
 <ul>
     {% for idea in top_ideas %}
@@ -34,7 +36,7 @@
                     		</a>
                         </h2>
                         <h3>{{ idea.overview }} | <span class="published_date">{{ idea.published_date }}</span></h3>
-                        <p class="username">by <i class="username">{{ idea.user }}</i></p>
+                        <p class="username">by <i class="username"><a href="{% url 'profile' %}">{{ idea.user }}</a></i></p>
                         <p>{{ idea.description|truncatewords:50 }}</p>
                     </div>
                 </div>

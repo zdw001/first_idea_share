@@ -4,6 +4,7 @@
 {% endblock title %}
 
 {% block content %}
+<div class="block">
     <h1>
         Browse ideas {% if initial %} Starting with 
         '{{ initial|title }}'{% endif %}
@@ -51,4 +52,5 @@
     {% if initial != letter %}
     <a href="{% url 'browse_by_name' %}">Back to Browse</a>
     {% endif %}
+</div>
 {% endblock content %}

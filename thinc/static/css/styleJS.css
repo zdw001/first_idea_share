@@ -5,6 +5,11 @@ body {
     background-image: url("../images/noise.png");
 }
 
+.block {
+  padding: 0;
+  margin: 20px 10%;
+}
+
  /* ================== NAV BAR ============== */
 
 .sidenav {
@@ -55,7 +60,7 @@ body {
 #burger {
   font-size:40px;
   cursor:pointer;
-  margin: 20px;
+  margin: 20px 30px;
   display:inline-block;
   float:left;
 }
@@ -82,9 +87,7 @@ body {
   float: left;
 }
 /*        CONTENT       */
-.page_content {
-  padding: 0;
-  margin: 0 10%;
+#content {
 }
 
 .username {
@@ -110,16 +113,16 @@ body {
   margin: 0 0 20px;
 }
 
-.banner img {
-  opacity: 0.8;
-}
-
 .banner h1 {
   text-indent: 50px;
-  margin: 30px;
+  margin: 30px 50px;
   color: white;
-  font-size: 70px;
-  float: left;
+  font-size: 50px;
+  word-wrap: break-word;
+}
+
+.banner_content {
+  width: 70%;
 }
 
 a#logo {
